@@ -21,16 +21,24 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
+        test: /\.sass$/,
         loader: extractTextPlugin.extract({
-          fallbackLoader: "style-loader",
-          loader: 'css-loader',
+          //fallbackLoader: "style-loader",
+          loader: ['css-loader', 'postcss-loader', 'sass-loader'],
           publicPath: '../assets'
         })
       }
     ]
   },
   plugins: [
-    new extractTextPlugin('../css/style.css')
+    new extractTextPlugin('../css/style.css'),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        sassLoader: {
+          outputStyle: 'compressed',
+          precision: 3
+        }
+      }
+    })
   ]
 }
