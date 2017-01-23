@@ -1,6 +1,6 @@
 import React from 'react';
 
-require('./Header.css')
+require('./Header.sass')
 
 export default class Header extends React.Component {
   render() {
